@@ -5,7 +5,7 @@
 ### クローン
 
 ```shel
-git clone 
+git clone https://github.com/yshr-926/input_googlecal.git
 ```
 ### 環境構築
 ここではconda環境を使う．
