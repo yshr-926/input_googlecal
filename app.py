@@ -8,8 +8,8 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        start_time = request.form.get('start_time')
-        end_time = request.form.get('end_time')
+        start_time = request.form.get('start_time') + ':00'
+        end_time = request.form.get('end_time') + ':00'
         origin = request.form.get('origin')
         destination = request.form.get('destination')
 
@@ -18,17 +18,17 @@ def index():
             'start': {
 
                 # 形式：YYYY-MM-DDTHH:MM:SS+09:00
-                'dateTime': start_time + ':00' + '+09:00',
+                'dateTime': start_time,
                 'timeZone': 'Asia/Tokyo',
             },
             'end': {
-                'dateTime': end_time + ':00' + '+09:00',
+                'dateTime': end_time,
                 'timeZone': 'Asia/Tokyo',
             },
         }
 
         service = get_calendar_service()
-        test = service.events().insert(calendarId='primary', body=event).execute()
+        service.events().insert(calendarId='primary', body=event).execute()
 
         return 'Event created!'
 
@@ -42,6 +42,11 @@ def get_calendar_service():
     service = build("calendar", "v3", credentials=credentials)
 
     return service
+
+def trans_time(time):
+    time = datetime.datetime.strptime(time, '%Y-%m-%dT%H:%M:%S')
+    time = time.strftime('%Y%m%d%H%M%S')
+    return time
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -6,9 +6,17 @@
 <body>
     <form method="POST">
         <label for="origin">出発地:</label><br>
-        <input type="text" id="origin" name="origin"><br>
+        <select id="origin" name="origin">
+            <option value="Fukuoka_Fukuoka">福岡県福岡市</option>
+            <option value="Fukuoka_Iiduka">福岡県飯塚市</option>
+            <option value="Oita_Beppu">大分県別府市</option>
+            <!-- 他のオプションを追加することも可能です -->
+        </select><br>
         <label for="destination">目的地:</label><br>
-        <input type="text" id="destination" name="destination"><br>
+        <select id="origin" name="origin">
+            <option value="Oita_Oita">大分県大分市</option>
+            <!-- 他のオプションを追加することも可能です -->
+        </select><br>
         <label for="start_time">開始時間:</label><br>
         <input type="datetime-local" id="start_time" name="start_time"><br>
         <label for="end_time">終了時間:</label><br>
