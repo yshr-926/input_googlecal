@@ -2,25 +2,66 @@
 <html>
 <head>
     <title>Travel Event</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
     <form method="POST">
-        <label for="origin">出発地:</label><br>
+        <label for="origin">出発地:</label>
         <select id="origin" name="origin">
-            <option value="Fukuoka_Fukuoka">福岡県福岡市</option>
-            <option value="Fukuoka_Iiduka">福岡県飯塚市</option>
-            <option value="Oita_Beppu">大分県別府市</option>
+            <option value="福岡県福岡市">福岡県福岡市</option>
+            <option value="福岡県飯塚市">福岡県飯塚市</option>
+            <option value="大分県別府市">大分県別府市</option>
             <!-- 他のオプションを追加することも可能です -->
-        </select><br>
-        <label for="destination">目的地:</label><br>
-        <select id="origin" name="origin">
-            <option value="Oita_Oita">大分県大分市</option>
+        </select>
+
+        <label for="destination">目的地:</label>
+        <select id="destination" name="destination">
+            <option value="大分県大分市">大分県大分市</option>
             <!-- 他のオプションを追加することも可能です -->
-        </select><br>
-        <label for="start_time">開始時間:</label><br>
-        <input type="datetime-local" id="start_time" name="start_time"><br>
-        <label for="end_time">終了時間:</label><br>
-        <input type="datetime-local" id="end_time" name="end_time"><br>
+        </select>
+
+        <label for="start_time">開始時間:</label>
+        <input type="datetime-local" id="start_time" name="start_time">
+
+        <label for="end_time">終了時間:</label>
+        <input type="datetime-local" id="end_time" name="end_time">
+
         <input type="submit" value="Submit">
     </form>
 </body>

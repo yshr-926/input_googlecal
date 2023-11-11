@@ -17,7 +17,7 @@ def index():
             'summary': f'Travel from {origin} to {destination}',
             'start': {
 
-                # 形式：YYYY-MM-DDTHH:MM:SS+09:00
+                # 形式：YYYY-MM-DDTHH:MM:SS
                 'dateTime': start_time,
                 'timeZone': 'Asia/Tokyo',
             },
@@ -28,9 +28,9 @@ def index():
         }
 
         service = get_calendar_service()
-        service.events().insert(calendarId='primary', body=event).execute()
+        created_event = service.events().insert(calendarId='primary', body=event).execute()
 
-        return 'Event created!'
+        return f'Event created! Check it at <a href="{created_event.get("htmlLink")}">here</a>'
 
     return render_template('index.html')
 
