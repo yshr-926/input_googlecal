@@ -2,6 +2,40 @@
 <html>
 <head>
     <title>Travel Event</title>
+    <script>
+        window.onload = function() {
+            // 現在の日時を設定するコード...
+            var now = new Date();
+            var month = (now.getMonth() + 1);               
+            var day = now.getDate();
+            if(month < 10) 
+                month = "0" + month;
+            if(day < 10) 
+                day = "0" + day;
+            var today = now.getFullYear() + '-' + month + '-' + day;
+            var time = now.getHours() + ":" + now.getMinutes();
+            document.getElementById('start_time').value = today + "T" + time;
+
+            // 開始時間と終了時間の前後関係をチェックするコード
+            document.getElementById('start_time').addEventListener('change', function() {
+                var startTime = document.getElementById('start_time').value;
+                var endTime = document.getElementById('end_time').value;
+                if (endTime < startTime) {
+                    alert('開始時間は終了時間より前に設定してください。');
+                    document.getElementById('start_time').value = endTime;
+                }
+            });
+
+            document.getElementById('end_time').addEventListener('change', function() {
+                var startTime = document.getElementById('start_time').value;
+                var endTime = document.getElementById('end_time').value;
+                if (endTime < startTime) {
+                    alert('終了時間は開始時間より後に設定してください。');
+                    document.getElementById('end_time').value = startTime;
+                }
+            });
+        }
+    </script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -44,9 +78,9 @@
     <form method="POST">
         <label for="origin">出発地:</label>
         <select id="origin" name="origin">
-            <option value="福岡県福岡市">福岡県福岡市</option>
             <option value="福岡県飯塚市">福岡県飯塚市</option>
-            <option value="大分県別府市">大分県別府市</option>
+            <option value="福岡県福岡市博多区">福岡県福岡市博多区</option>
+            <option value="福岡県福岡市東区">福岡県福岡市東区</option>
             <!-- 他のオプションを追加することも可能です -->
         </select>
 
