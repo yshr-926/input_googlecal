@@ -4,7 +4,7 @@
     <title>Travel Event</title>
     <script>
         window.onload = function() {
-            // 現在の日時を設定するコード...
+            // 現在の日時を設定
             var now = new Date();
             var month = (now.getMonth() + 1);               
             var day = now.getDate();
@@ -16,16 +16,7 @@
             var time = now.getHours() + ":" + now.getMinutes();
             document.getElementById('start_time').value = today + "T" + time;
 
-            // 開始時間と終了時間の前後関係をチェックするコード
-            document.getElementById('start_time').addEventListener('change', function() {
-                var startTime = document.getElementById('start_time').value;
-                var endTime = document.getElementById('end_time').value;
-                if (endTime < startTime) {
-                    alert('開始時間は終了時間より前に設定してください。');
-                    document.getElementById('start_time').value = endTime;
-                }
-            });
-
+            // // 開始時間と終了時間の前後関係をチェック
             document.getElementById('end_time').addEventListener('change', function() {
                 var startTime = document.getElementById('start_time').value;
                 var endTime = document.getElementById('end_time').value;
